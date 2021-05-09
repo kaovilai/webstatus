@@ -1,0 +1,108 @@
+# This is a basic workflow to help you get started with Actions
+
+name: status-check curl
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '*/5'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+       protocols:
+       - http
+       - https
+       sites:
+          - '_amazonses.kaovilai.pw.'
+          - '4sale.kaovilai.pw.'
+          - 'a.kaovilai.pw.'
+          - 'address.kaovilai.pw.'
+          - 'amazon.kaovilai.pw.'
+          - 'blog.kaovilai.pw.'
+          - 'cal.kaovilai.pw.'
+          - 'calendar.kaovilai.pw.'
+          - 'contact.4sale.kaovilai.pw.'
+          - 'contact.kaovilai.pw.'
+          - 'dielxd2eby6ninpq5mugpqhlr3nwxjcz._domainkey.kaovilai.pw.'
+          - 'directory.ncsu.kaovilai.pw.'
+          - 'facebook.kaovilai.pw.'
+          - 'fb.kaovilai.pw.'
+          - 'github.kaovilai.pw.'
+          - 'home.kaovilai.pw.'
+          - 'in.kaovilai.pw.'
+          - 'kaovilai.pw.'
+          - 'l.kaovilai.pw.'
+          - 'legacy.kaovilai.pw.'
+          - 'li.kaovilai.pw.'
+          - 'linkedin.kaovilai.pw.'
+          - 'links.kaovilai.pw.'
+          - 'mail.kaovilai.pw.'
+          - 'mail.scissor.kaovilai.pw.'
+          - 'mymoodle.kaovilai.pw.'
+          - 'ncsu.kaovilai.pw.'
+          - 'new.kaovilai.pw.'
+          - 'phone.kaovilai.pw.'
+          - 'pqhi2mypbksp.kaovilai.pw.'
+          - 'print.kaovilai.pw.'
+          - 'quora.kaovilai.pw.'
+          - 'r.kaovilai.pw.'
+          - 'referrals.kaovilai.pw.'
+          - 'rel200project.ncsu.kaovilai.pw.'
+          - 'resume.kaovilai.pw.'
+          - 'rfnsed5bwenhrsaeu4svbyzzsmo3ju4e._domainkey.kaovilai.pw.'
+          - 's.kaovilai.pw.'
+          - 'scissor.kaovilai.pw.'
+          - 'scissorapps.kaovilai.pw.'
+          - 'sosoho._domainkey.kaovilai.pw.'
+          - 'speedtest.kaovilai.pw.'
+          - 'temjai.kaovilai.pw.'
+          - 'textresume.kaovilai.pw.'
+          - 'wolfprint.kaovilai.pw.'
+          - 'www.kaovilai.pw.'
+          - 'yt4ccbqbk6ukptlukbuhsnd54iimsfdx._domainkey.kaovilai.pw.'
+          - 'tig.pw.'
+          - '8dfce2ddc7c1e4db8c4f46c0bae3f54b.blog.tig.pw.'
+          - 'adjs.tig.pw.'
+          - 'everything.tig.pw.'
+          - 'github.tig.pw.'
+          - 'inwin.zerotier.tig.pw.'
+          - 'inwin301.zerotier.tig.pw.'
+          - 'ise.ncsu.tig.pw.'
+          - 'ise.zerotier.tig.pw.'
+          - 'jd-oracle'
+          - 'ncsu.tig.pw.'
+          - 'remote.tig.pw.'
+          - 'spectre.ise.zerotier.tig.pw.'
+          - 'sql.ise.ncsu.tig.pw.'
+          - 'tina.ncsu.tig.pw.'
+          - 'tig.pw.'
+          - 'amzn.tig.pw.'
+          - 'b4.tig.pw.'
+          - 'blog.tig.pw.'
+          - 'contact.tig.pw.'
+          - 'linkedin.tig.pw.'
+          - 'lkin.tig.pw.'
+          - 'meet.tig.pw.'
+          - 'resume.tig.pw.'
+          - 'twitter.tig.pw.'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: curl ${{ matrix.protocols }}://${{ matrix.sites }}
