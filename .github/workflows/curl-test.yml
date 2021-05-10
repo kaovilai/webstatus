@@ -16,13 +16,11 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-env:
-  RUNS_ON: ubuntu-latest
 jobs:
   # This workflow contains a single job called "build"
   http_https:
     # The type of runner that the job will run on
-    runs-on: $RUNS_ON
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
@@ -89,7 +87,7 @@ jobs:
         
   http:
     # The type of runner that the job will run on
-    runs-on: $RUNS_ON
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
