@@ -22,7 +22,7 @@ jobs:
   # This workflow contains a single job called "build"
   http_https:
     # The type of runner that the job will run on
-    runs-on: ${{ env.runs-on }}
+    runs-on: ${{ runs-on }}
     strategy:
       fail-fast: true
       matrix:
@@ -89,7 +89,7 @@ jobs:
         
   http:
     # The type of runner that the job will run on
-    runs-on: ${{ env.runs-on }}
+    runs-on: ${{ runs-on }}
     strategy:
       fail-fast: true
       matrix:
