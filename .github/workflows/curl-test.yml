@@ -16,20 +16,21 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  runs-on: ubuntu-latest
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  http_https:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ env.runs-on }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
        protocols:
        - http
        - https
        sites:
           - '4sale.kaovilai.pw.'
-          - 'a.kaovilai.pw.'
           - 'address.kaovilai.pw.'
           - 'amazon.kaovilai.pw.'
           - 'blog.kaovilai.pw.'
@@ -85,3 +86,20 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: curl ${{ matrix.protocols }}://${{ matrix.sites }}
+        
+  http:
+    # The type of runner that the job will run on
+    runs-on: ${{ env.runs-on }}
+    strategy:
+      fail-fast: true
+      matrix:
+       protocols:
+       - http
+       sites:
+          - 'a.kaovilai.pw.'
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: curl ${{ matrix.protocols }}://${{ matrix.sites }}
+
